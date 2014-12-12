@@ -34,6 +34,7 @@ namespace MvcTelefonos.Servicios
            
             using (var handler = new HttpClientHandler())
             {
+               handler.Credentials=new NetworkCredential("luis.gil@tajamar365.com","123456");
                 using (var client = new HttpClient(handler))
                 {
                     var contenido = new StringContent(serializado);
@@ -85,6 +86,9 @@ namespace MvcTelefonos.Servicios
         {
             List<TModelo> lista;
             var cl = WebRequest.Create(UrlBase);
+            cl.Credentials=new NetworkCredential("luis.gil@tajamar365.com","123456");
+
+
             cl.Method = "GET";
             var res = cl.GetResponse();
             using (var stream = res.GetResponseStream())
